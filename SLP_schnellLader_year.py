@@ -22,10 +22,11 @@ def excel_addition(path1):
 
     for index in range(6, 102):
         z = "C" + str(index)
-        ws[z].value = ( float(ws[z].value) + float(ws1[z].value) ) 
+        i = "D" + str(index)
+        ws[i].value = ( float(ws[i].value) + float(ws1[z].value) ) 
 
     wb.save(SLP_PATH)
-    print("Addidion" + path1 +  " Complet...")
+    print("Addidion " + path1 +  " Complet...")
 
 
 def excel_avearge():
@@ -33,7 +34,7 @@ def excel_avearge():
     wb = load_workbook(SLP_PATH)
     ws = wb.active
     for index in range(6, 102):
-        z = "C" + str(index)
+        z = "D" + str(index)
         ws[z].value = float(ws[z].value)  / 46
     
     wb.save(SLP_PATH)
@@ -59,4 +60,4 @@ def main_SLP():
     print("All weeks sucessfully completed...")
     
 
-#main_SLP()
+main_SLP()

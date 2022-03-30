@@ -1,3 +1,4 @@
+
 """
 weekly Standardlastprofile calculation
 
@@ -10,11 +11,13 @@ from openpyxl import load_workbook
 EXTENTION = ".xlsx"
 MOTHER_PATH = "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/"
 
+def check_files():
+    pass
+
 def get_filenames(folder):
     xlsx_files = os.listdir(MOTHER_PATH + folder)
     print("Getting filenames Complet...")
     return(xlsx_files)
-
 
 def change_filename(filepath, week):
     new_filepath =  week + "/" +"Lastprofile_" + week + EXTENTION
@@ -82,7 +85,7 @@ def main():
     
 
 
-main()
+#main()
 
 
 
