@@ -1,5 +1,5 @@
 """
-Standardlastprofile calculation
+weekly Standardlastprofile calculation
 
 """
 
@@ -8,41 +8,43 @@ from openpyxl import Workbook, load_workbook
 
 # Constants
 EXTENTION = ".xlsx"
+MOTHER_PATH = "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/"
 
 def get_filenames(folder):
-    xlsx_files = os.listdir("//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/" + folder)
+    xlsx_files = os.listdir(MOTHER_PATH + folder)
     print("Getting filenames Complet...")
     return(xlsx_files)
 
 
 def change_filename(filepath, week):
     new_filepath =  week + "/" +"Lastprofile_" + week + EXTENTION
-    filepath = "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/" + filepath
-    os.rename(filepath, "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/" + new_filepath)
+    filepath = MOTHER_PATH + filepath
+    os.rename(filepath, MOTHER_PATH + new_filepath)
     print("Changing filename Complet...")
     return new_filepath
 
 def excel_operation(path1, path2, path3, path4, path5):
-    wb1 = load_workbook(path1)
+    wb1 = load_workbook(MOTHER_PATH + path1)
     ws1 = wb1.active
 
-    wb2 = load_workbook(path2)
+    wb2 = load_workbook(MOTHER_PATH + path2)
     ws2 = wb2.active
 
-    wb3 = load_workbook(path3)
-    ws3 = wb3.activ5
+    wb3 = load_workbook(MOTHER_PATH + path3)
+    ws3 = wb3.active
 
-    wb4 = load_workbook(path4)
+    wb4 = load_workbook(MOTHER_PATH + path4)
     ws4 = wb4.active
 
-    wb5 = load_workbook(path5)
+    wb5 = load_workbook(MOTHER_PATH + path5)
     ws5 = wb5.active
 
     for index in range(6, 102):
         z = "C" + str(index)
         ws1[z].value = ( float(ws1[z].value) + float(ws2[z].value) + float(ws3[z].value) + float(ws4[z].value) + float(ws5[z].value)   ) / 5
 
-    wb1.save()
+    wb1.save(MOTHER_PATH + path1)
+    print("Saving new workbook Complet...")
 
 def main():
     weeks = []
@@ -50,7 +52,8 @@ def main():
         weeks.append("kw_" + str(i))
 
     for week in weeks:
-        print(week + "Start")
+        print("****************")
+        print(week + " Start")
         filenames = get_filenames(week)
         filepaths = []
 
@@ -68,11 +71,12 @@ def main():
             print("Number of files incorrect")
             print(filenames)
         
-        print(week + "Complet")
+        print(week + "Complet...")
     
+    print("All weeks sucessfully completed...")
     
 
     
 
-main()
+
 
