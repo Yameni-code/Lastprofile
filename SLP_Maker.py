@@ -16,8 +16,9 @@ def get_filenames(folder):
 
 
 def change_filename(filepath, week):
-    new_filepath = week + "/" +"Lastprofile_" + week + EXTENTION
-    os.rename(filepath, new_filepath)
+    new_filepath =  week + "/" +"Lastprofile_" + week + EXTENTION
+    filepath = "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/" + filepath
+    os.rename(filepath, "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/" + new_filepath)
     print("Changing filename Complet...")
     return new_filepath
 
@@ -44,25 +45,30 @@ def excel_operation(path1, path2, path3, path4, path5):
     wb1.save()
 
 def main():
-    week = "kw_6"
+    weeks = []
+    for i in range(5, 51):
+        weeks.append("kw_" + str(i))
 
-    filenames = get_filenames(week)
-    filepaths = []
+    for week in weeks:
+        print(week + "Start")
+        filenames = get_filenames(week)
+        filepaths = []
 
-    if (len(filenames) == 5 ):
-        filepaths.append( week + "/" + filenames[0])
-        filepaths.append( week + "/" + filenames[1])
-        filepaths.append( week + "/" + filenames[2])
-        filepaths.append( week + "/" + filenames[3])
-        filepaths.append( week + "/" + filenames[4])
+        if (len(filenames) == 5 ):
+            filepaths.append( week + "/" + filenames[0])
+            filepaths.append( week + "/" + filenames[1])
+            filepaths.append( week + "/" + filenames[2])
+            filepaths.append( week + "/" + filenames[3])
+            filepaths.append( week + "/" + filenames[4])
         
-        filepaths[0] = change_filename(filepaths[0], week)
-        print(filepaths)
-        #ExcelExport_20220329_105609.xlsx
-        #excel_operation(filepaths[0] , filepaths[1] , filepaths[2] , filepaths[3] , filepaths[4] )
-    else:
-        print("Number of files incorrect")
-        print(filenames)
+            filepaths[0] = change_filename(filepaths[0], week)
+            #ExcelExport_20220329_105216.xlsx
+            excel_operation(filepaths[0] , filepaths[1] , filepaths[2] , filepaths[3] , filepaths[4] )
+        else:
+            print("Number of files incorrect")
+            print(filenames)
+        
+        print(week + "Complet")
     
     
 
