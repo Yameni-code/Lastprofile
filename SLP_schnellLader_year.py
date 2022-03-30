@@ -3,7 +3,6 @@ weekly Standardlastprofile calculation
 
 """
 
-import os
 from openpyxl import load_workbook
 
 # Constants
