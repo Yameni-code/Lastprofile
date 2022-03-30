@@ -12,6 +12,8 @@ def create_Folder(parent_path, folder_name):
 
 def run_fun():
     for kw in range(5, 52):
-        parent_path = "//cifs02/RoamingData$/u2110370/Documents/Standardlastprofilen"
+        parent_path = "//cifs02/RoamingData$/u2110370/Documents/GitHub/Lastprofile/"
         folder_name = "kw_" + str(kw)
         create_Folder(parent_path, folder_name)
+
+#run_fun()

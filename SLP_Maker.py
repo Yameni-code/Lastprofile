@@ -4,7 +4,7 @@ weekly Standardlastprofile calculation
 """
 
 import os
-from openpyxl import Workbook, load_workbook
+from openpyxl import load_workbook
 
 # Constants
 EXTENTION = ".xlsx"
@@ -47,9 +47,9 @@ def excel_operation(path1, path2, path3, path4, path5):
     print("Saving new workbook Complet...")
 
 def main():
-    weeks = []
-    for i in range(5, 51):
-        weeks.append("kw_" + str(i))
+    weeks = ["kw_35"]
+    #for i in range(5, 51):
+     #   weeks.append("kw_" + str(i))
 
     for week in weeks:
         print("****************")
@@ -76,7 +76,8 @@ def main():
     print("All weeks sucessfully completed...")
     
 
-    
+
+#main()
 
 
 

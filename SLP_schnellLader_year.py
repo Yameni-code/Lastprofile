@@ -34,14 +34,14 @@ def excel_avearge():
     ws = wb.active
     for index in range(6, 102):
         z = "C" + str(index)
-        ws[z].value = float(ws[z].value)  / 45
+        ws[z].value = float(ws[z].value)  / 46
     
     wb.save(SLP_PATH)
     print("Average Complet...")
 
 
 
-def main():
+def main_SLP():
     weeks = []
     for i in range(5, 51):
         weeks.append("kw_" + str(i))
@@ -50,12 +50,13 @@ def main():
         print("****************")
         print(week + " Start")
         
+        filepath = week + "/" +"Lastprofile_" + week + EXTENTION
 
-        
-        
-        print(week + "Complet...")
+        excel_addition(filepath)
+        print(week + " End")
     
     excel_avearge()
     print("All weeks sucessfully completed...")
     
 
+#main_SLP()
